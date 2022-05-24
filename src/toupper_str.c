@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   toupper_str.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhashiba <hhashiba@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/02 15:32:51 by hhashiba          #+#    #+#             */
-/*   Updated: 2022/05/02 15:32:52 by hhashiba         ###   ########.fr       */
+/*   Created: 2022/05/23 16:45:16 by hhashiba          #+#    #+#             */
+/*   Updated: 2022/05/23 16:45:18 by hhashiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+#include "../include/ft_printf.h"
 
-# include <stdio.h>
-# include <stdarg.h>
-# include <unistd.h>
-# include <limits.h>
+static int	ft_islower(int c)
+{
+	return ('a' <= c && c <= 'z');
+}
 
-#endif
+void	toupper_str(char *str)
+{
+	while (*str != '\0')
+	{
+		if (ft_islower(*str))
+			*str -= 32;
+		str++;
+	}
+}
