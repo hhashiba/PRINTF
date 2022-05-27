@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   isalpha.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhashiba <hhashiba@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/19 10:21:23 by hhashiba          #+#    #+#             */
-/*   Updated: 2022/05/19 10:21:24 by hhashiba         ###   ########.fr       */
+/*   Created: 2022/04/05 14:18:17 by hhashiba          #+#    #+#             */
+/*   Updated: 2022/04/05 14:18:21 by hhashiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "../includes/libft.h"
 
-size_t	ft_strlen(const char *str)
+static int	ft_isupper(int c)
 {
-	size_t	i;
+	return ('A' <= c && c <= 'Z');
+}
 
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
+static int	ft_islower(int c)
+{
+	return ('a' <= c && c <= 'z');
+}
+
+int	ft_isalpha(int c)
+{
+	return (ft_isupper(c) || ft_islower(c));
 }

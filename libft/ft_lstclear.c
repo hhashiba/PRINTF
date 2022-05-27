@@ -1,40 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert.c                                          :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhashiba <hhashiba@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/19 10:17:17 by hhashiba          #+#    #+#             */
-/*   Updated: 2022/05/19 10:17:20 by hhashiba         ###   ########.fr       */
+/*   Created: 2022/04/18 22:13:25 by hhashiba          #+#    #+#             */
+/*   Updated: 2022/04/18 22:13:26 by hhashiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "../includes/libft.h"
 
-char	*convert(size_t num, int base)
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	size_t			tmp;
-	int				size;
-	char			*str;
+	t_list	*tmp;
 
-	if (num == 0)
-		return ("0");
-	tmp = num;
-	size = 0;
-	while (tmp != 0)
+	if (lst == NULL || del == NULL)
+		return ;
+	while (*lst != NULL)
 	{
-		tmp /= base;
-		size++;
+		tmp = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = tmp;
 	}
-	str = ft_calloc(size + 1, sizeof(char));
-	if (str == NULL)
-		return (NULL);
-	str += size;
-	while (num != 0)
-	{
-		*--str = "0123456789abcdef"[num % base];
-		num /= base;
-	}
-	return (str);
 }

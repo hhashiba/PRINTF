@@ -1,40 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert.c                                          :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhashiba <hhashiba@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/19 10:17:17 by hhashiba          #+#    #+#             */
-/*   Updated: 2022/05/19 10:17:20 by hhashiba         ###   ########.fr       */
+/*   Created: 2022/04/18 11:02:04 by hhashiba          #+#    #+#             */
+/*   Updated: 2022/04/18 11:02:06 by hhashiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "../includes/libft.h"
 
-char	*convert(size_t num, int base)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	size_t			tmp;
-	int				size;
-	char			*str;
-
-	if (num == 0)
-		return ("0");
-	tmp = num;
-	size = 0;
-	while (tmp != 0)
-	{
-		tmp /= base;
-		size++;
-	}
-	str = ft_calloc(size + 1, sizeof(char));
-	if (str == NULL)
-		return (NULL);
-	str += size;
-	while (num != 0)
-	{
-		*--str = "0123456789abcdef"[num % base];
-		num /= base;
-	}
-	return (str);
+	if (lst == NULL || new == NULL)
+		return ;
+	if (*lst != NULL)
+		new->next = *lst;
+	else
+		new->next = NULL;
+	*lst = new;
 }

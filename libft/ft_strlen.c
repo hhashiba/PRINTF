@@ -1,40 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert.c                                          :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhashiba <hhashiba@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/19 10:17:17 by hhashiba          #+#    #+#             */
-/*   Updated: 2022/05/19 10:17:20 by hhashiba         ###   ########.fr       */
+/*   Created: 2022/04/05 14:53:14 by hhashiba          #+#    #+#             */
+/*   Updated: 2022/04/05 14:53:15 by hhashiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "../includes/libft.h"
 
-char	*convert(size_t num, int base)
+size_t	ft_strlen(const char *s)
 {
-	size_t			tmp;
-	int				size;
-	char			*str;
+	size_t	i;
 
-	if (num == 0)
-		return ("0");
-	tmp = num;
-	size = 0;
-	while (tmp != 0)
-	{
-		tmp /= base;
-		size++;
-	}
-	str = ft_calloc(size + 1, sizeof(char));
-	if (str == NULL)
-		return (NULL);
-	str += size;
-	while (num != 0)
-	{
-		*--str = "0123456789abcdef"[num % base];
-		num /= base;
-	}
-	return (str);
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
 }

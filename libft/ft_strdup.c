@@ -1,40 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert.c                                          :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhashiba <hhashiba@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/19 10:17:17 by hhashiba          #+#    #+#             */
-/*   Updated: 2022/05/19 10:17:20 by hhashiba         ###   ########.fr       */
+/*   Created: 2022/04/11 12:38:00 by hhashiba          #+#    #+#             */
+/*   Updated: 2022/04/11 12:38:01 by hhashiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "../includes/libft.h"
 
-char	*convert(size_t num, int base)
+static char	*ft_strcpy(char *dst, const char *src)
 {
-	size_t			tmp;
-	int				size;
-	char			*str;
+	size_t	i;
 
-	if (num == 0)
-		return ("0");
-	tmp = num;
-	size = 0;
-	while (tmp != 0)
+	i = 0;
+	while (src[i] != '\0')
 	{
-		tmp /= base;
-		size++;
+		dst[i] = src[i];
+		i++;
 	}
-	str = ft_calloc(size + 1, sizeof(char));
-	if (str == NULL)
+	dst[i] = '\0';
+	return (dst);
+}
+
+char	*ft_strdup(const char *s1)
+{
+	size_t	len;
+	char	*s2;
+
+	len = ft_strlen(s1);
+	s2 = malloc(sizeof(char) * (len + 1));
+	if (s2 == NULL)
 		return (NULL);
-	str += size;
-	while (num != 0)
-	{
-		*--str = "0123456789abcdef"[num % base];
-		num /= base;
-	}
-	return (str);
+	return (ft_strcpy(s2, s1));
 }

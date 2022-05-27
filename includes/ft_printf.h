@@ -19,22 +19,14 @@
 # include <limits.h>
 # include <stdbool.h>
 
-//
-int		ft_printf(const char *fmt, ...);
+//ft_printf.c
+int		ft_printf(const char *fmt, ...) __attribute__ ((format(printf, 1, 2)));
 //check_printable_len.c
 bool	check_printable_len(int *len, size_t put_len);
 //convert.c
 char	*convert(size_t num, int base);
-//ft_calloc.c
-void	*ft_calloc(size_t count, size_t size);
-//ft_memset.c
-void	*ft_memset(void *buf, int ch, size_t n);
-//ft_bzero.c
-void	ft_bzero(void *s, size_t n);
 //ft_strlen_chr.c
 size_t	ft_strlen_chr(const char *str, int c);
-//ft_strlen.c
-size_t	ft_strlen(const char *str);
 //ft_strchr.c
 char	*ft_strchr_null(const char *str, int c);
 //print_c_s_p_per.c
@@ -46,5 +38,14 @@ void	print_i_d(va_list *ap, int *len);
 void	print_u_x(const char **fmt, va_list *ap, int *len, int base);
 //toupper_str.c
 void	toupper_str(char *str);
+//libft
+//ft_calloc.c
+void	*ft_calloc(size_t count, size_t size);
+//ft_memset.c
+void	*ft_memset(void *buf, int ch, size_t n);
+//ft_bzero.c
+void	ft_bzero(void *s, size_t n);
+//ft_strlen.c
+size_t	ft_strlen(const char *str);
 
 #endif

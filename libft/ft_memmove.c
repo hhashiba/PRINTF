@@ -1,30 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhashiba <hhashiba@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/05 16:59:17 by hhashiba          #+#    #+#             */
-/*   Updated: 2022/04/05 16:59:19 by hhashiba         ###   ########.fr       */
+/*   Created: 2022/04/05 20:56:29 by hhashiba          #+#    #+#             */
+/*   Updated: 2022/04/05 20:56:31 by hhashiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "../includes/libft.h"
 
-void	*ft_memset(void *buf, int ch, size_t n)
+void	*ft_memmove(void *buf1, const void *buf2, size_t n)
 {
-	size_t			i;
-	unsigned char	*mem;
-	unsigned char	set;
+	size_t				i;
+	unsigned char		*dst;
+	const unsigned char	*src;
 
-	i = 0;
-	mem = (unsigned char *)buf;
-	set = (unsigned char)ch;
-	while (i < n)
+	dst = (unsigned char *)buf1;
+	src = (const unsigned char *)buf2;
+	if (!(n == 0 || dst == src))
 	{
-		mem[i] = set;
-		i++;
+		i = 0;
+		if (dst < src)
+		{
+			while (i < n)
+			{
+				dst[i] = src[i];
+				i++;
+			}
+		}
+		else
+		{
+			while (i++ < n)
+				dst[n - i] = src[n - i];
+		}
 	}
-	return (mem);
+	return (dst);
 }

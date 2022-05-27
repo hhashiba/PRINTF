@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "../includes/ft_printf.h"
 
 void	print_until_per(const char **fmt, int *len)
 {
@@ -48,7 +48,7 @@ void	print_per_case(const char **fmt, va_list *ap, int *len)
 	(*fmt)++;
 }
 
-__attribute__ ((format(printf, 1, 2))) int	ft_printf(const char *fmt, ...)
+int	ft_printf(const char *fmt, ...)
 {
 	va_list	ap;
 	int		len;

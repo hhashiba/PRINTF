@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhashiba <hhashiba@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/10 22:18:07 by hhashiba          #+#    #+#             */
-/*   Updated: 2022/04/10 22:18:08 by hhashiba         ###   ########.fr       */
+/*   Created: 2022/04/05 16:59:17 by hhashiba          #+#    #+#             */
+/*   Updated: 2022/04/05 16:59:19 by hhashiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "../includes/libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+void	*ft_memset(void *buf, int ch, size_t n)
 {
-	void	*array;
+	size_t			i;
+	unsigned char	*mem;
+	unsigned char	set;
 
-	if (count == 0 || size == 0)
+	i = 0;
+	mem = (unsigned char *)buf;
+	set = (unsigned char)ch;
+	while (i < n)
 	{
-		count = 1;
-		size = 1;
+		mem[i] = set;
+		i++;
 	}
-	if (count > SIZE_MAX / size)
-		return (NULL);
-	array = malloc(size * count);
-	if (array == NULL)
-		return (NULL);
-	ft_bzero(array, size * count);
-	return (array);
+	return (mem);
 }

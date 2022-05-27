@@ -1,40 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert.c                                          :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhashiba <hhashiba@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/19 10:17:17 by hhashiba          #+#    #+#             */
-/*   Updated: 2022/05/19 10:17:20 by hhashiba         ###   ########.fr       */
+/*   Created: 2022/04/08 23:01:26 by hhashiba          #+#    #+#             */
+/*   Updated: 2022/04/08 23:01:27 by hhashiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "../includes/libft.h"
 
-char	*convert(size_t num, int base)
+char	*ft_strchr(const char *s, int c)
 {
-	size_t			tmp;
-	int				size;
-	char			*str;
+	size_t	i;
+	char	ch;
 
-	if (num == 0)
-		return ("0");
-	tmp = num;
-	size = 0;
-	while (tmp != 0)
+	i = 0;
+	ch = c;
+	while (s[i] != '\0')
 	{
-		tmp /= base;
-		size++;
+		if (s[i] == ch)
+			break ;
+		i++;
 	}
-	str = ft_calloc(size + 1, sizeof(char));
-	if (str == NULL)
-		return (NULL);
-	str += size;
-	while (num != 0)
-	{
-		*--str = "0123456789abcdef"[num % base];
-		num /= base;
-	}
-	return (str);
+	if (ch == '\0' || s[i] != '\0')
+		return ((char *)s + i);
+	return (NULL);
 }
