@@ -18,7 +18,6 @@
 # include <unistd.h>
 # include <limits.h>
 # include <stdbool.h>
-# include <errno.h>
 
 //ft_printf.c
 int		ft_printf(const char *fmt, ...) __attribute__ ((format(printf, 1, 2)));

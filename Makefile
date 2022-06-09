@@ -21,7 +21,6 @@ $(NAME): $(OBJS)
 	$(MAKE) bonus -C $(LIBFTDIR)
 	cp $(LIBFTDIR)libft.a $(NAME)
 	$(AR) rcs $@ $^
-
 clean:
 	$(RM) $(OBJS)
 	$(MAKE) clean -C $(LIBFTDIR)
