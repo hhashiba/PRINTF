@@ -14,9 +14,9 @@
 
 char	*convert(size_t num, int base)
 {
-	size_t			tmp;
-	int				size;
-	char			*str;
+	size_t	tmp;
+	int		size;
+	char	*str;
 
 	if (num == 0)
 		return ("0");

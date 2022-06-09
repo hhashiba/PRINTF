@@ -20,6 +20,11 @@ void	print_until_per(const char **fmt, int *len)
 	if (check_printable_len(len, tmp_len))
 	{
 		(*len) += write(1, *fmt, tmp_len);
+		if (errno != 0)
+		{
+			(*len) = -1;
+			return ;
+		}
 		(*fmt) = ft_strchr_null(*fmt, '%');
 	}
 	else

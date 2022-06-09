@@ -40,7 +40,7 @@ void	print_s(va_list *ap, int *len)
 			(*len) = -1;
 		return ;
 	}
-	str_len = ft_strlen(str);
+	str_len = ft_strlen_chr(str, '\0');
 	if (check_printable_len(len, str_len))
 		(*len) += write(1, str, str_len);
 	else
